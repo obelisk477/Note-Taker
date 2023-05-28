@@ -45,11 +45,37 @@ app.post('/notes', (req, res) => {
 
     } else {
         res.json('Error in adding note')
-
     }
-
 })
 
+app.delete('/notes/:id', (req,res) => {
+    let index = 0    
+    db.forEach((entry,i) => {
+        if (entry.noteId === req.params.id) {
+            index = i
+        }
+    })
+
+    db.splice(index, 1)
+
+    fs.writeFile('./db/db.json',JSON.stringify(db,null,4), (err) => {
+        if (err) {
+            console.error(err)
+        } else {
+            console.info('successfully deleted note')
+
+            const response = {
+                status: 'success',
+            }
+
+            res.json()
+        } 
+    })
+
+
+
+
+})
 
 
 module.exports = app

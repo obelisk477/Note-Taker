@@ -40,7 +40,11 @@ const saveNote = (note) =>
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(note),
-  });
+  })
+    .then((res) => res.json())
+    .then((response) => {
+      return response
+    })
 
 const deleteNote = (id) =>
   fetch(`/api/notes/${id}`, {
@@ -53,7 +57,7 @@ const deleteNote = (id) =>
 const renderActiveNote = () => {
   hide(saveNoteBtn);
 
-  if (activeNote.id) {
+  if (activeNote.noteId) {
     noteTitle.setAttribute('readonly', true);
     noteText.setAttribute('readonly', true);
     noteTitle.value = activeNote.title;
@@ -71,9 +75,12 @@ const handleNoteSave = () => {
     title: noteTitle.value,
     text: noteText.value,
   };
-  saveNote(newNote).then(() => {
+  saveNote(newNote).then((data) => {
     getAndRenderNotes();
     renderActiveNote();
+
+    let noteId = data.body.noteId
+    alert(`Note added with ID ${noteId}`)
   });
 };
 
@@ -83,7 +90,8 @@ const handleNoteDelete = (e) => {
   e.stopPropagation();
 
   const note = e.target;
-  const noteId = JSON.parse(note.parentElement.getAttribute('data-note')).id;
+  const noteId = JSON.parse(note.parentElement.getAttribute('data-note')).noteId;
+  console.log(noteId)
 
   if (activeNote.id === noteId) {
     activeNote = {};
@@ -99,6 +107,7 @@ const handleNoteDelete = (e) => {
 const handleNoteView = (e) => {
   e.preventDefault();
   activeNote = JSON.parse(e.target.parentElement.getAttribute('data-note'));
+  console.log(activeNote)
   renderActiveNote();
 };
 
