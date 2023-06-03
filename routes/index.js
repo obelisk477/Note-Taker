@@ -71,10 +71,6 @@ app.delete('/notes/:id', (req,res) => {
             res.json()
         } 
     })
-
-
-
-
 })
 
 
