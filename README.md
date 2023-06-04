@@ -2,20 +2,17 @@
 
 ## Description
 
-This is a simple command-line application that dynamically generates an SVG logo based on user input such as logo text, text color, shape, and shape color. This can be used to create a quick logo for a project with little input, rather than outsourcing the job & paying a graphic desinger
+This web application has a simple interface for taking notes and saving them to a database to be viewed later. Notes can also be deleted once they are no longer needed.
+
 ## Usage
 
-To use the application, download the code from the repo found at https://github.com/obelisk477/SVG-Logo-Maker. Navigate to the same directory as the "index.js" file and, assuming you have Node installed, run the command "npm i". This will install the necessary packages and dependencies.
+To use the application, navigate to https://glacial-lake-88025.herokuapp.com/. Click "Get Started", and you will be taken to the main view of the application with saved notes on the left and note input on the right. To add a note, enter both title and body information, at which point you'll see a save icon appear in the top right of the app. Clicking it will alert you that the note has been saved, and you'll then see your saved note appear in the left sidebar.
 
-After that, to run the application, simply type "node index.js" in the command line and hit enter. You will be guided through a series of promps that will be used to build out the logo according to your specifications, and afterwards, if there are no erros, you will be informed -- "Generated logo.svg". This file will be placed in the 'examples' folder found in the root directory, and can be used in the desired project.
+If you want to enter another note, you can click the '+' icon in the top right and repeat the process. If you want to go back and view notes at any time, you can click on that note in the sidebar, and it's title and body will re-appear on the right side of the page in read only mode. These notes will persist in the database should you want to come back to them at a later date. And if you want to delete a note, clicking the red trash icon on the corresponding note will remove it from the database.
 
-## Video
+## Screenshot
 
-A video demonstration of the application's functionality can be found at https://drive.google.com/file/d/1aQp21Ihec9h2UBhaC0msIVvyyNfSdK1D/view
-
-## Tests
-
-A series of tests can be run by installing Jest and running 'npx jest'. Further tests can be added to './lib/shapes.test.js' if you wish.
+![Screenshot of application](./public/assets/images/glacial-lake-88025.herokuapp.com_notes.png)
 
 ## License
 

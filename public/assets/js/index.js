@@ -79,8 +79,7 @@ const handleNoteSave = () => {
     getAndRenderNotes();
     renderActiveNote();
 
-    let noteId = data.body.noteId
-    alert(`Note added with ID ${noteId}`)
+    alert(`Note successfully added!`)
   });
 };
 
